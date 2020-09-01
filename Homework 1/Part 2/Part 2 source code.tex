@@ -1,0 +1,362 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+
+% add LaTeX packages to use here
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{framed}
+\usepackage[most]{tcolorbox}
+\usepackage{geometry}
+\usepackage{graphicx}
+
+ % set dimensions for page layout
+\geometry
+{
+ left=5em,
+ right=5em,
+ bottom=5em,
+ top=6em,
+ headheight=110pt,
+ showframe=false
+}
+
+\setlist[itemize]{leftmargin=*} % prevents indenting of itemize
+
+% abbreviations for some common math symbols
+\newcommand{\Rset}{\hbox{$\mathbb R$}}
+\newcommand{\Nset}{\hbox{$\mathbb N$}}
+\newcommand{\Pset}{\hbox{$\mathbb{N}^{+}$}}
+\newcommand{\Zset}{\hbox{$\mathbb N$}}
+\newcommand{\Qset}{\hbox{$\mathbb Q$}}
+
+% theorem style
+\newtheoremstyle{thmstyle}% name of the style to be used
+  {0pt}% measure of space to leave above the theorem. E.g.: 3pt
+  {0pt}% measure of space to leave below the theorem. E.g.: 3pt
+  {}% name of font to use in the body of the theorem
+  {}% measure of space to indent
+  {\bfseries}% name of head font
+  {.}% punctuation between head and body
+  { }% space after theorem head; " " = normal inter-word space
+  {}% Manually specify head
+
+% theorem environment instance
+\theoremstyle{thmstyle}
+\newtheorem{theorem}{Theorem}
+
+% shaded and framed solution environment
+\makeatletter
+\newenvironment{shadedSolutionBox}
+  {\setlength{\OuterFrameSep}{0in}%
+  \definecolor{shadecolor}{gray}{.8}% shading of shaded solution box
+  \bigskip%
+  \@nameuse{shaded*}\par\noindent\ignorespaces \textit{Solution}.}
+  {\hspace{\stretch{1}}\rule{1.5ex}{1.5ex}% adds filled box
+  \@nameuse{endshaded*}%
+  \bigskip}
+\makeatother
+
+% shaded and framed theorem environment
+\makeatletter
+\newenvironment{thm}
+  {\setlength{\OuterFrameSep}{0in}%
+  \definecolor{shadecolor}{gray}{1}% shading of shaded Theorem box
+  \@nameuse{snugshade*}\par\noindent\ignorespaces%
+   \@nameuse{theorem}}
+  {\hspace{\stretch{1}}\scalebox{1.5}{\hbox{$\triangleleft$}}% adds triangle shape
+  \@nameuse{endtheorem}%
+  \@nameuse{endsnugshade*}%
+  }
+\makeatother
+
+% header and footer elements of every page except the first.
+\pagestyle{fancy}
+\fancyfoot[L]{\textsc{CISC {\small\selectfont 3230}} }
+\fancyhead[R]{{\small\selectfont\textsc{\studentLastName}}}
+\fancyfoot[C]{{\small\selectfont\assignmentName}}
+\fancyfoot[R]{{\small\selectfont\thepage\ of \pageref{LastPage}}}
+\renewcommand{\headrulewidth}{0.8pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% hline with variable thickness
+\makeatletter
+\def\thickhline{%
+  \noalign{\ifnum0=`}\fi\hrule \@height \thickarrayrulewidth \futurelet
+   \reserved@a\@xthickhline}
+\def\@xthickhline{\ifx\reserved@a\thickhline
+               \vskip\doublerulesep
+               \vskip-\thickarrayrulewidth
+             \fi
+      \ifnum0=`{\fi}}
+\makeatother
+
+% length instance for \thickhline
+\newlength{\thickarrayrulewidth}
+\setlength{\thickarrayrulewidth}{.8pt}
+
+% header and footer for first page
+\fancypagestyle{firstpage}
+{
+\fancyhf{}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[C]{%
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}@{}l @{} c @{} r @{} }
+{\small\selectfont\courseName}&{\normalsize\selectfont\assignmentName}&{\small\selectfont\studentFirstName\ \studentLastName}\\
+\thickhline
+&&{\scriptsize\selectfont\collaboratorNames}
+\end{tabular*}%
+}
+\fancyfoot[R]{{\small\selectfont\thepage\ of \pageref{LastPage}}}
+\fancyfoot[L]{{\footnotesize\selectfont\pdfcreationdate}}
+}
+
+\newcommand{\courseName}{Theoretical Computer Science} % course name
+
+% your first name, your last name, and the assignment name
+\newcommand{\studentLastName}{Nikabadze} % your last name
+\newcommand{\studentFirstName}{Luka} % your first name (and middle name, if applicable)
+\newcommand{\assignmentName}{Assignment 1 CISC3230} % the assignment name
+\newcommand{\collaboratorNames}{[First Name Initial]. Last Name} % if you worked with anyone to complete any part of the assignment, include the initial of the first name (and middle name, if applicable) and full last name of each of your collaborators, separated by commas (e.g., if you worked with Arthur Paul Pedersen and Sandra Lee, include "A.P. Pedersen, S. Lee")
+
+
+
+
+\begin{document} % marks the beginning of the document
+
+\thispagestyle{firstpage} % institutes page style for first page
+
+\setlength{\abovedisplayskip}{20pt} % space above math in align* environment
+\setlength{\belowdisplayskip}{20pt} % space below math in align* environment
+
+
+
+% marks the beginning of the document body
+
+\begin{itemize}\setlength{\itemsep}{1em} % \itemsep is the spacing between items in environment
+\item[1.]  
+{\textbf{A) }}
+$ [(p \vee (q \wedge r)]$
+
+\begin{center}
+\begin{tabular} {|c|c|c|c|c|c|c|c|c|}
+\hline
+$Columns$ & $1$ & $2$ & $3 $& $4$ & $5$  \\
+\hline
+$Rows$ &$ p $& $q $& $r $& $q \wedge r $& $ [(p \vee (q \wedge r)]$ \\
+\hline
+1 & 0 & 0 & 0 & 0 & 0 \\
+\hline
+2 & 0 & 0 & 1 & 0 & 0 \\
+\hline
+3 & 0 & 1 & 0 & 0 & 0 \\
+\hline
+4 & 0 & 1 & 1 & 0 & 1 \\
+\hline
+5 & 1 & 0 & 0 & 0 & 1 \\
+\hline
+6 & 1 & 0 & 1 & 1 & 1 \\
+\hline
+7 & 1 & 1 & 0 & 0 & 1 \\
+\hline
+8 & 1 & 1 & 1 & 1 & 1 \\
+\hline
+
+
+\end{tabular}
+\end{center}
+
+
+
+
+
+{\textbf{B) }}
+$ [(p \vee q)\wedge (p\vee r)]$
+
+
+\begin{center}
+\begin{tabular} {|c|c|c|c|c|c|c|c|c|}
+\hline
+$Columns$ & $1$ & $2$ & $3 $& $4$ & $5$  & $6$  \\
+\hline
+$Rows$ &$ p $& $q $& $r $& $(p \vee q) $& $(p \vee r) $ & $ [(p \vee q)\wedge (p\vee r)]$
+ \\
+\hline
+1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+\hline
+2 & 0 & 0 & 1 & 0 & 1 & 0 \\
+\hline
+3 & 0 & 1 & 0 & 1 & 0 & 0 \\
+\hline
+4 & 0 & 1 & 1 & 1 & 1 & 1 \\
+\hline
+5 & 1 & 0 & 0 & 1 & 1 & 1 \\
+\hline
+6 & 1 & 0 & 1 & 1 & 1 & 1 \\
+\hline
+7 & 1 & 1 & 0 & 1 & 1 & 1 \\
+\hline
+8 & 1 & 1 & 1 & 1 & 1 & 1 \\
+\hline
+
+
+
+
+
+\end{tabular}
+\end{center}
+
+
+
+
+{\textbf{As we see in out of following tables result in 5Th raw and 6Th raw are same therefore they are equal  }}
+
+
+
+\hspace{1cm}
+
+
+\item[2.]  
+
+
+{\textbf{we should consider a graph which has at least one degree without any loops or cycles in. if we think maximum number of degrees that a node can have  equals $n-1$. because, if $n =$ number of nodes, it can connect to all other nodes but not itself. below i will demonstrate my example with a table }}
+
+
+
+\begin{center}
+\begin{tabular} {|c|c|c|c|}
+
+\hline
+$Number of Nodes $& $Degree $  \\
+\hline
+1 & 4   \\
+\hline
+2 & 3   \\
+\hline
+3 & 2  \\
+\hline
+4 & 1   \\
+\hline
+5 & 0 or 5   \\
+\hline
+
+\end{tabular}
+\end{center}
+
+{\textbf{As you can see in the table $1st$ node has 4 degree. This is because it can connect to all other nodes but not on itself. Then on the $2nd$ node it can't have $5$ degrees with the same reason as $1st$ node. it also can have 4 nodes however, that will prove given task that two nodes must repeat number of degrees. so, since we still have nodes to discuss $2nd$ node will have $3$ degrees. Then $3rd$ node can't have $5, 4, or$ $ 3$. $5$ because of mentioned above, $4$ and $3$ because it is already used, therefore $3rd$ node will have $2$ degrees. Then $4th$ node can't have $5, 4, 3, or 2$ $5$ because of above mentioned reason. and $4 3 2 $ because it is already used. Therefore it only can have $1$ degree. As we continue we left $5th$ node. as we can see there is only three number to choose from. First is $5$ but, we can's use it. second number is $0 $ however, we cant use $0$ as well because it means there are no degrees therefore it will not be part of graph. and third choice is to use other number of degrees which are $4, 3, 2, or 1 $ this means that $2 $ or mode nodes will must have same number of degrees  }}
+
+
+\item[3.] 
+
+{\textbf{A) }}
+{\textbf{the sum of the first n natural numbers $(S_n = 1+2+3...+n)$ is given by  $S_n = \frac{1}{2}n(n+1)$}}
+{\textbf{Now lets calculate for $1 $ and $2$ so we make sure that base case and formula is good. }}
+
+{\textbf{ when $n = 1$  then $ \frac{1}{2}1(1+1)$}}
+
+{\textbf{ when $n = 2$  then $ 1 + 2 = \frac{1}{2}2(2+1)$}}
+
+{\textbf{Now we can have formula for all n 
+}}
+{\textbf{
+\begin{itemize}\setlength{\itemsep}{1em} % \itemsep is the spacing between items in environment
+\begin{align*}
+\sum^{n}_{i=1}\frac{1}{2}2(2+1).
+\end{align*} 
+\end{itemize} }}
+
+{\textbf{ Then by rule of induction we have to add $n+1$ which gives us 
+$S_{n+1}=  \frac{(n+1)(n+2)}{2} $}}
+
+{\textbf{ above equality proves that given equality for the sum of n natural $S_n = \frac{1}{2}n(n+1)$ is also  true for $(n+1)$. therefore give equality is correct.  }}
+
+\hspace{1cm}
+
+{\textbf{B) }}
+
+{\textbf{Sum of the cube of first n natural numbers is given by $C_n = \frac{1}{4}(n^4+2n^3+n^2)=\frac{1}{4}n^2(n+1)^2$ }}
+
+{\textbf{Now lets calculate for $n=1$ }}
+
+{\textbf{ $1^3=\frac{1}{4}1^2(1+1)^2 $}}
+
+{\textbf{base case is true. Now we can write formula which will be true for n}}
+
+
+
+\begin{itemize}\setlength{\itemsep}{1em} % \itemsep is the spacing between items in environment
+\begin{align*}
+\sum^{k=n}_{i=1} i^3=1^3+2^3+ ... + n^3 = \frac{1}{4}n^2(n+1)^2.
+\end{align*} 
+\end{itemize} 
+
+
+{\textbf{so for $(n+1)$ it would be $C_n= 1^3+2^3+...+n^3+(n+1)^3 = \frac{(n+1)^2 (n+2)^2}{4}$}}
+
+{\textbf{which means $ C_{n+1}= \frac{(n+1)^2 (n+2)^2}{4} $}}
+
+{\textbf{So above equality proves that give equality for the sum of the cube of natural n numbers is true for $n+1$ therefore equality is correct}}
+
+{\textbf{From above explanation we can see that 
+$C_n= \frac{1}{4}(n^4+2n^3+n^2) = \frac{1}{4} n^2(n+1)^2 = [\frac{n(n+1)}{2}]^2 =(S_n)^2$}}
+
+{\textbf{$C_n=(S_n)^2$}}
+
+{\textbf{it is concluded that sum of the cube of the first n natural number is equal to sum of the square of n natural numbers.}}
+
+
+\item[4.]  
+
+{\textbf{A)}}
+{\textbf{Lets say N= set of natural numbers. R(x,y)= relation such that for any (x,y) x<=y}}
+
+{\textbf{Reflexive: x=x. so R(x,x) holds true. therefore above relation R(y.x) does not holds true}}
+
+{\textbf{Symmetric:For any two natural numbers x and y such that R(x,y) does not hold true.  for example lets say $(2,3)$ belongs to R. so $2\leq3 $ holds true. 
+however $(3,2)$ is not true because $2\leq3 $ is false}}
+
+{\textbf{Transitive: for (x,y) belongs to R and (y,z) belongs to R then (x,z) also belongs R.
+in this case $(2,3)$ belongs to r and $(3,4)$ also belongs are. since $2\leq3$ and $3\leq4$ then $(2,4)$ also belongs R. also $2\leq4$ so relation is transitive}}
+
+{\textbf{Missing property is SYMMETRIC}}
+
+
+{\textbf{B)}}
+
+{\textbf{Lets say N = the set of natural numbers that are larger than 2)
+R(x,y)= a relation such that there is a prime number which divides both x and y.}}
+
+{\textbf{Reflexive: For natural number that belongs N and R(x,x) holds true.  For example, suppose 4 belongs to N, then $(4,4)$ holds true as $4$ is divisible by 2. Therefore, the relation is reflexive.}}
+
+{\textbf{Symmetric: For two natural number (x,y) that belongs N so R(x,y) holds true, R(y,x) also holds true.
+For example, suppose $(2,4)$ belongs to N, then $(2,4)$ also belongs R as 2 and 4 are divisible by 2. Moreover, $(4,2)$ also belongs to R as 4 and 2 are divisible by 2.
+Therefore, the relation is symmetric. }}
+
+{\textbf{Transitive: For $(x,y)$ that belongs to R and $(y,z)$ also belongs to R, $(x,z)$ may not belongs to R.
+For instance, suppose $(3,6)$ belongs to R as 3 and 6 are divisible by 3 and $(6,8)$ belongs to R as 6 and 8 are divisible by 2, then $(3,8)$ does not belongs to R as there is no prime number which divides both 3 and 8.
+Therefore, the relation is not transitive.}}
+
+{\textbf{Missing property is TRANSITIVE }}
+
+
+
+
+
+
+
+\begin{align*}
+\end{align*}
+\end{itemize}
+
+
+
+
+
+
+
+\end{document}
