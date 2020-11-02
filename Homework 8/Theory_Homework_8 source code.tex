@@ -1,0 +1,213 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+
+% add LaTeX packages to use here
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{framed}
+\usepackage[most]{tcolorbox}
+\usepackage{geometry}
+\usepackage{graphicx}
+
+ % set dimensions for page layout
+\geometry
+{
+ left=5em,
+ right=5em,
+ bottom=5em,
+ top=6em,
+ headheight=110pt,
+ showframe=false
+}
+
+\setlist[itemize]{leftmargin=*} % prevents indenting of itemize
+
+% abbreviations for some common math symbols
+\newcommand{\Rset}{\hbox{$\mathbb R$}}
+\newcommand{\Nset}{\hbox{$\mathbb N$}}
+\newcommand{\Pset}{\hbox{$\mathbb{N}^{+}$}}
+\newcommand{\Zset}{\hbox{$\mathbb N$}}
+\newcommand{\Qset}{\hbox{$\mathbb Q$}}
+
+% theorem style
+\newtheoremstyle{thmstyle}% name of the style to be used
+  {0pt}% measure of space to leave above the theorem. E.g.: 3pt
+  {0pt}% measure of space to leave below the theorem. E.g.: 3pt
+  {}% name of font to use in the body of the theorem
+  {}% measure of space to indent
+  {\bfseries}% name of head font
+  {.}% punctuation between head and body
+  { }% space after theorem head; " " = normal inter-word space
+  {}% Manually specify head
+
+% theorem environment instance
+\theoremstyle{thmstyle}
+\newtheorem{theorem}{Theorem}
+
+% shaded and framed solution environment 
+\makeatletter
+\newenvironment{shadedSolutionBox}
+  {\setlength{\OuterFrameSep}{0in}%
+  \definecolor{shadecolor}{gray}{.8}% shading of shaded solution box
+  \bigskip%
+  \@nameuse{shaded*}\par\noindent\ignorespaces \textit{Solution}.}
+  {\hspace{\stretch{1}}\rule{1.5ex}{1.5ex}% adds filled box 
+  \@nameuse{endshaded*}%
+  \bigskip}
+\makeatother
+
+% shaded and framed theorem environment 
+\makeatletter
+\newenvironment{thm}
+  {\setlength{\OuterFrameSep}{0in}%
+  \definecolor{shadecolor}{gray}{1}% shading of shaded Theorem box
+  \@nameuse{snugshade*}\par\noindent\ignorespaces%
+   \@nameuse{theorem}}
+  {\hspace{\stretch{1}}\scalebox{1.5}{\hbox{$\triangleleft$}}% adds triangle shape
+  \@nameuse{endtheorem}%
+  \@nameuse{endsnugshade*}%
+  }
+\makeatother
+
+% header and footer elements of every page except the first.
+\pagestyle{fancy}
+\fancyfoot[L]{\textsc{CISC {\small\selectfont 3230}} }
+\fancyhead[R]{{\small\selectfont\textsc{\studentLastName}}}
+\fancyfoot[C]{{\small\selectfont\assignmentName}}
+\fancyfoot[R]{{\small\selectfont\thepage\ of \pageref{LastPage}}}
+\renewcommand{\headrulewidth}{0.8pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% hline with variable thickness
+\makeatletter
+\def\thickhline{%
+  \noalign{\ifnum0=`}\fi\hrule \@height \thickarrayrulewidth \futurelet
+   \reserved@a\@xthickhline}
+\def\@xthickhline{\ifx\reserved@a\thickhline
+               \vskip\doublerulesep
+               \vskip-\thickarrayrulewidth
+             \fi
+      \ifnum0=`{\fi}}
+\makeatother
+
+% length instance for \thickhline
+\newlength{\thickarrayrulewidth} 
+\setlength{\thickarrayrulewidth}{.8pt}
+
+% header and footer for first page
+\fancypagestyle{firstpage}
+{
+\fancyhf{}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[C]{%
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}@{}l @{} c @{} r @{} }
+{\small\selectfont\courseName}&{\normalsize\selectfont\assignmentName}&{\small\selectfont\studentFirstName\ \studentLastName}\\
+\thickhline
+&&{\scriptsize\selectfont\collaboratorNames}
+\end{tabular*}%
+}
+\fancyfoot[R]{{\small\selectfont\thepage\ of \pageref{LastPage}}}
+\fancyfoot[L]{{\footnotesize\selectfont\pdfcreationdate}}
+}
+
+\newcommand{\courseName}{Theoretical Computer Science} % course name
+
+% your first name, your last name, and the assignment name
+\newcommand{\studentLastName}{Nikabadze} % your last name
+\newcommand{\studentFirstName}{Luka} % your first name (and middle name, if applicable)
+\newcommand{\assignmentName}{Homework 1 part 1} % the assignment name
+\newcommand{\collaboratorNames}{[First Name Initial]. Last Name} % if you worked with anyone to complete any part of the assignment, include the initial of the first name (and middle name, if applicable) and full last name of each of your collaborators, separated by commas (e.g., if you worked with Arthur Paul Pedersen and Sandra Lee, include "A.P. Pedersen, S. Lee")
+
+
+
+
+\begin{document} % marks the beginning of the document
+
+\thispagestyle{firstpage} % institutes page style for first page
+
+\setlength{\abovedisplayskip}{20pt} % space above math in align* environment
+\setlength{\belowdisplayskip}{20pt} % space below math in align* environment
+
+
+
+% marks the beginning of the document body
+
+
+\begin{itemize}\setlength{\itemsep}{1em} % \itemsep is the spacing between items in environment
+\item[2.3] A) the variable of G are R,S,T and X. variable are the non terminal symbols that appear in the rules of the grammar.
+
+B) the terminals of g are a,b. terminals are the terminal symbols that appear in the rules of the grammar.
+
+c) the start variable G is R. R $\longrightarrow$ XRX|S. start variable is a variable usually occurs on the left hand side of the topmost rule.
+
+D) the three strings not in :(G) are aba, b and $\epsilon$. since these strings cannot be derived from the given grammar G.
+
+E) the string cannot be derived using G.
+
+\item[2.4] D) The context free grammar that generates the language $\{ w|$ the length of the w is odd and its middle symbol is a 0  $ \}$ is given
+
+$S \longrightarrow 0|0S0|0S1|1S0|1S1$
+
+E) CFG that generates the language $\{ w|w = W^R $ that is w is a palindrome \} is 
+
+$S \longrightarrow 0|1|0S0|1S1|\epsilon$
+
+
+\item[2.16] to show that CFG is closed under union operation considers two starts $S_1 and S_2$
+ for the two different languages $L_1 and L_2$
+ 
+ grammar for union operation is given 
+ 
+ $ S \longrightarrow S_1 | S_2$
+ 
+ if booth the language belongs to the CFG then union of both the language should belong to CFG. so if user generates $S_1 and S_2$ string or both then in that case union of the language is generated. so this implies that CFG is closed under union.
+ 
+ 
+ to show that CFg is closed under star operation. we should consider one start variable $S_1$ for language $L_1$
+ 
+ grammar of union is shown
+ 
+ $S \longrightarrow S_1 S | \epsilon$ if the language belongs to the CFG then star of the language should belong to CFG. so shown below if user generates zero or many strings which is definition of the star. 
+
+\item[2.26] we can prove is by applying the induction method on the string w of length n. 
+
+for n=1 : consider a string a of length 1 in Chomsky normal form. so the valid derivation for this will be $S \longrightarrow a$,
+
+the number of step can be obtained as follows:
+
+$2n-1=2(1)-1$
+
+$=2-1$
+
+$=1$
+
+for n=k 
+
+$2n01 =2(k)-1$
+
+$=2k-1$
+
+assuming a string of length at most k > 1 terminal symbols and it has a string of length.
+
+$n= k+1$ in Chomsky normal form. since n>1 consider a language as follows in cnf where derivation starts with start symbol s.
+
+$S \longrightarrow BC$
+
+$B \longrightarrow *X $
+
+$C \longrightarrow *Y$
+
+since $B \longrightarrow *X $ has length of x and $C \longrightarrow *Y$
+had a length of y. so it proved that i requires 2n-1 step to derivation the string 
+$w \in L(G) $in Chomsky normal form.
+
+\end{itemize}
+
+
+\end{document}
