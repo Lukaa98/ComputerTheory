@@ -1,0 +1,184 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+
+% add LaTeX packages to use here
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{framed}
+\usepackage[most]{tcolorbox}
+\usepackage{geometry}
+\usepackage{graphicx}
+
+ % set dimensions for page layout
+\geometry
+{
+ left=5em,
+ right=5em,
+ bottom=5em,
+ top=6em,
+ headheight=110pt,
+ showframe=false
+}
+
+\setlist[itemize]{leftmargin=*} % prevents indenting of itemize
+
+% abbreviations for some common math symbols
+\newcommand{\Rset}{\hbox{$\mathbb R$}}
+\newcommand{\Nset}{\hbox{$\mathbb N$}}
+\newcommand{\Pset}{\hbox{$\mathbb{N}^{+}$}}
+\newcommand{\Zset}{\hbox{$\mathbb N$}}
+\newcommand{\Qset}{\hbox{$\mathbb Q$}}
+
+% theorem style
+\newtheoremstyle{thmstyle}% name of the style to be used
+  {0pt}% measure of space to leave above the theorem. E.g.: 3pt
+  {0pt}% measure of space to leave below the theorem. E.g.: 3pt
+  {}% name of font to use in the body of the theorem
+  {}% measure of space to indent
+  {\bfseries}% name of head font
+  {.}% punctuation between head and body
+  { }% space after theorem head; " " = normal inter-word space
+  {}% Manually specify head
+
+% theorem environment instance
+\theoremstyle{thmstyle}
+\newtheorem{theorem}{Theorem}
+
+% shaded and framed solution environment 
+\makeatletter
+\newenvironment{shadedSolutionBox}
+  {\setlength{\OuterFrameSep}{0in}%
+  \definecolor{shadecolor}{gray}{.8}% shading of shaded solution box
+  \bigskip%
+  \@nameuse{shaded*}\par\noindent\ignorespaces \textit{Solution}.}
+  {\hspace{\stretch{1}}\rule{1.5ex}{1.5ex}% adds filled box 
+  \@nameuse{endshaded*}%
+  \bigskip}
+\makeatother
+
+% shaded and framed theorem environment 
+\makeatletter
+\newenvironment{thm}
+  {\setlength{\OuterFrameSep}{0in}%
+  \definecolor{shadecolor}{gray}{1}% shading of shaded Theorem box
+  \@nameuse{snugshade*}\par\noindent\ignorespaces%
+   \@nameuse{theorem}}
+  {\hspace{\stretch{1}}\scalebox{1.5}{\hbox{$\triangleleft$}}% adds triangle shape
+  \@nameuse{endtheorem}%
+  \@nameuse{endsnugshade*}%
+  }
+\makeatother
+
+% header and footer elements of every page except the first.
+\pagestyle{fancy}
+\fancyfoot[L]{\textsc{CISC {\small\selectfont 3230}} }
+\fancyhead[R]{{\small\selectfont\textsc{\studentLastName}}}
+\fancyfoot[C]{{\small\selectfont\assignmentName}}
+\fancyfoot[R]{{\small\selectfont\thepage\ of \pageref{LastPage}}}
+\renewcommand{\headrulewidth}{0.8pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% hline with variable thickness
+\makeatletter
+\def\thickhline{%
+  \noalign{\ifnum0=`}\fi\hrule \@height \thickarrayrulewidth \futurelet
+   \reserved@a\@xthickhline}
+\def\@xthickhline{\ifx\reserved@a\thickhline
+               \vskip\doublerulesep
+               \vskip-\thickarrayrulewidth
+             \fi
+      \ifnum0=`{\fi}}
+\makeatother
+
+% length instance for \thickhline
+\newlength{\thickarrayrulewidth} 
+\setlength{\thickarrayrulewidth}{.8pt}
+
+% header and footer for first page
+\fancypagestyle{firstpage}
+{
+\fancyhf{}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[C]{%
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}@{}l @{} c @{} r @{} }
+{\small\selectfont\courseName}&{\normalsize\selectfont\assignmentName}&{\small\selectfont\studentFirstName\ \studentLastName}\\
+\thickhline
+&&{\scriptsize\selectfont\collaboratorNames}
+\end{tabular*}%
+}
+\fancyfoot[R]{{\small\selectfont\thepage\ of \pageref{LastPage}}}
+\fancyfoot[L]{{\footnotesize\selectfont\pdfcreationdate}}
+}
+
+\newcommand{\courseName}{Theoretical Computer Science} % course name
+
+% your first name, your last name, and the assignment name
+\newcommand{\studentLastName}{Nikabadze} % your last name
+\newcommand{\studentFirstName}{Luka} % your first name (and middle name, if applicable)
+\newcommand{\assignmentName}{Homework 1 part 1} % the assignment name
+\newcommand{\collaboratorNames}{[First Name Initial]. Last Name} % if you worked with anyone to complete any part of the assignment, include the initial of the first name (and middle name, if applicable) and full last name of each of your collaborators, separated by commas (e.g., if you worked with Arthur Paul Pedersen and Sandra Lee, include "A.P. Pedersen, S. Lee")
+
+
+
+
+\begin{document} % marks the beginning of the document
+
+\thispagestyle{firstpage} % institutes page style for first page
+
+\setlength{\abovedisplayskip}{20pt} % space above math in align* environment
+\setlength{\belowdisplayskip}{20pt} % space below math in align* environment
+
+
+
+% marks the beginning of the document body
+
+
+\begin{itemize}\setlength{\itemsep}{1em} % \itemsep is the spacing between items in environment
+\item[4.8] Let define p as $\{ (i,j,k) \in T | i+j+k = s \}$ and for each triple let $i+j+k$ be the sum so of the triplet  
+
+so now for each number $s \in N$.
+
+no we enumerating the triples with sum zero. then with sum of 1 and then sum of 2 and so on...
+
+hence set P is finite for every $s \in N$.
+
+since P is finite and according to the given definition it is countable too therefore the set p' should be also countable. 
+
+therefore any set p where $i \in N$, t is also countable since a countable union of number of finite sets is countable. 
+
+\item[4.09] a relation is known as equivalence in nature if it is reflexive, transitive and symmetric. same size relation is equivalence relations if and only if it is symmetric reflexive and transitive. 
+
+for reflexively: if the user checks the identity function on the set A then this identify function is a bijection A to A. 
+
+hence the same size relation is reflexive relation.
+
+for symmetry: if the function $F : A \longrightarrow $ is a bijective function then it means the inverse function is also bijective function from the set b to set a.
+ hence if A b then B A so the same size relation is symmetric relation also. 
+ 
+ for transitive:  assume that A b and B C. then the function $ f A \longrightarrow B$ is bijective function form A to b and from B to C. 
+ 
+ therefore the composition of tho bijective function f and g is also bijective function from A to C. 
+ 
+hence the same size relation is transitive relation as A C. 
+
+\item[4.15] suppose there is total n variables in the grammar g and the grammar there is one pumping lemma constant in grammar. assume pumping lemma constant is s and the value of this pumping lemma constant is assumed to be $2^\ (n-1)$
+
+grammar g is capable of generating string which is in the form $1^m$ for $0 < m < s ! + s$ then g is.
+
+Turing machine is used for verifying that whether the string is accepted or not. if the string is recognized then turning machine accepts that particular string otherwise turning machine rejects that particular string.
+
+
+Turing machine is working as a decider for CFG and deciding whether er the string is accepted or not by using the predefined rules mentioned above. 
+
+therefore we can say Turing machine S is decidable.
+\end{itemize}
+
+
+
+\end{document}
